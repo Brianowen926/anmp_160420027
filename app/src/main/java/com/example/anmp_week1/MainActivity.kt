@@ -21,4 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         //toDo: tolong tambahkan dialog yes no (cuman coba coba)
     }
+
+    var username=""
+    var pass = ""
 }
