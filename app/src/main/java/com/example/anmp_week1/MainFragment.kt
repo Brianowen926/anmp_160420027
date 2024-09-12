@@ -20,6 +20,11 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //diapnggil stlh layout ter loaded. Jadi wajib ada func ini
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btnOption.setOnClickListener{
+            val action = MainFragmentDirections.actionOptionFragment() //artinya btnStart diklik, dia mengarah dari fragmentMain ke fragmentGame
+            Navigation.findNavController(it).navigate(action)
+        }
         binding.btnStart.setOnClickListener{
             val name = binding.editName.text.toString()
             val action = MainFragmentDirections.actionGameFragment(name) //artinya btnStart diklik, dia mengarah dari fragmentMain ke fragmentGame

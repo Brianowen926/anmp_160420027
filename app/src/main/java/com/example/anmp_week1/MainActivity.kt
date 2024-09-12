@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.example.anmp_week1.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,11 +18,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         navController = (supportFragmentManager.findFragmentById(R.id.hostFragment) as NavHostFragment).navController //bagian ini handle semuanya
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerlayout)
+
+        NavigationUI.setupWithNavController(binding.navView, navController)
+        binding.bottomNav.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() //artinya semuanya diserahkan kembali ke navController
+        return NavigationUI.navigateUp(navController, binding.drawerlayout)
+                    || super.onSupportNavigateUp() //artinya semuanya diserahkan kembali ke navController
+
     }
 
 }
